@@ -42,6 +42,7 @@ func metricsMiddleware(next http.Handler) http.Handler {
 func main() {
 	// Database connection setup
 	connectorInstance := &database.MySQLDatabase{}
+
 	var db connector.DatabaseConnection = connectorInstance
 
 	if err := db.ConnectDB(); err != nil {
