@@ -1,0 +1,162 @@
+2025/01/09 13:31:32 Application started
+2025/01/09 13:31:32 Server is running on port 8080...
+2025/01/09 13:31:32 Endpoints:
+2025/01/09 13:31:32 http://localhost:8080/forecast?table=sales_data
+2025/01/09 13:31:32 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 13:31:32 http://localhost:8080/cost?table=sales_data
+2025/01/09 13:31:32 http://localhost:8080/metrics
+2025/01/09 13:33:57 Shutting down server...
+2025/01/09 13:33:57 Server exiting
+2025/01/09 13:34:33 Application started
+2025/01/09 13:34:33 Server is running on port 8080...
+2025/01/09 13:34:33 Endpoints:
+2025/01/09 13:34:33 http://localhost:8080/forecast?table=sales_data
+2025/01/09 13:34:33 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 13:34:33 http://localhost:8080/cost?table=sales_data
+2025/01/09 13:34:33 http://localhost:8080/metrics
+2025/01/09 13:34:35 Shutting down server...
+2025/01/09 13:34:35 Server exiting
+2025/01/09 13:41:21 Application started
+2025/01/09 13:41:21 Server is running on port 8080...
+2025/01/09 13:41:21 Endpoints:
+2025/01/09 13:41:21 http://localhost:8080/forecast?table=sales_data
+2025/01/09 13:41:21 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 13:41:21 http://localhost:8080/cost?table=sales_data
+2025/01/09 13:41:21 http://localhost:8080/metrics
+2025/01/09 13:44:52 Shutting down server...
+2025/01/09 13:44:52 Server exiting
+2025/01/09 13:45:02 Application started
+2025/01/09 13:45:02 Server is running on port 8080...
+2025/01/09 13:45:02 Endpoints:
+2025/01/09 13:45:02 http://localhost:8080/forecast?table=sales_data
+2025/01/09 13:45:02 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 13:45:02 http://localhost:8080/cost?table=sales_data
+2025/01/09 13:45:02 http://localhost:8080/metrics
+2025/01/09 13:46:28 Shutting down server...
+2025/01/09 13:46:28 Server exiting
+2025/01/09 13:47:05 Application started
+2025/01/09 13:47:05 Server is running on port 8080...
+2025/01/09 13:47:05 Endpoints:
+2025/01/09 13:47:05 http://localhost:8080/forecast?table=sales_data
+2025/01/09 13:47:05 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 13:47:05 http://localhost:8080/cost?table=sales_data
+2025/01/09 13:47:05 http://localhost:8080/metrics
+2025/01/09 13:47:49 Shutting down server...
+2025/01/09 13:47:49 Server exiting
+2025/01/09 13:48:01 Application started
+2025/01/09 13:48:01 Server is running on port 8080...
+2025/01/09 13:48:01 Endpoints:
+2025/01/09 13:48:01 http://localhost:8080/forecast?table=sales_data
+2025/01/09 13:48:01 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 13:48:01 http://localhost:8080/cost?table=sales_data
+2025/01/09 13:48:01 http://localhost:8080/metrics
+2025/01/09 13:48:23 Shutting down server...
+2025/01/09 13:48:23 Server exiting
+2025/01/09 15:34:33 Application started
+2025/01/09 15:34:33 Server is running on port 8080...
+2025/01/09 15:34:33 Endpoints:
+2025/01/09 15:34:33 http://localhost:8080/forecast?table=sales_data
+2025/01/09 15:34:33 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 15:34:33 http://localhost:8080/cost?table=sales_data
+2025/01/09 15:34:33 http://localhost:8080/metrics
+2025/01/09 16:00:29 Shutting down server...
+2025/01/09 16:00:29 Server exiting
+2025/01/09 16:00:32 Application started
+2025/01/09 16:00:32 Server is running on port 8080...
+2025/01/09 16:00:32 Endpoints:
+2025/01/09 16:00:32 http://localhost:8080/forecast?table=sales_data
+2025/01/09 16:00:32 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 16:00:32 http://localhost:8080/cost?table=sales_data
+2025/01/09 16:00:32 http://localhost:8080/metrics
+echo "Test log entry" >> /home/shikho/inventory/app.log
+
+2025/01/09 16:27:43 Application started
+2025/01/09 16:27:43 Server is running on port 8080...
+2025/01/09 16:27:43 Endpoints:
+2025/01/09 16:27:43 http://localhost:8080/forecast?table=sales_data
+2025/01/09 16:27:43 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 16:27:43 http://localhost:8080/cost?table=sales_data
+2025/01/09 16:27:43 http://localhost:8080/metrics
+2025/01/09 17:34:29 Shutting down server...
+2025/01/09 17:34:29 Server exiting
+2025/01/09 17:34:31 Application started
+2025/01/09 17:34:31 Server is running on port 8080...
+2025/01/09 17:34:31 Endpoints:
+2025/01/09 17:34:31 http://localhost:8080/forecast?table=sales_data
+2025/01/09 17:34:31 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 17:34:31 http://localhost:8080/cost?table=sales_data
+2025/01/09 17:34:31 http://localhost:8080/metrics
+2025/01/09 17:37:09 Shutting down server...
+2025/01/09 17:37:09 Server exiting
+2025/01/09 17:37:13 Application started
+2025/01/09 17:37:13 Server is running on port 8080...
+2025/01/09 17:37:13 Endpoints:
+2025/01/09 17:37:13 http://localhost:8080/forecast?table=sales_data
+2025/01/09 17:37:13 http://localhost:8080/EOQ?table=sales_data
+2025/01/09 17:37:13 http://localhost:8080/cost?table=sales_data
+2025/01/09 17:37:13 http://localhost:8080/metrics
+Test log entry
+2025/01/15 11:46:02 Application started
+2025/01/15 11:46:02 Server is running on port 8080...
+2025/01/15 11:46:02 Endpoints:
+2025/01/15 11:46:02 http://localhost:8080/forecast?table=sales_data
+2025/01/15 11:46:02 http://localhost:8080/EOQ?table=sales_data
+2025/01/15 11:46:02 http://localhost:8080/cost?table=sales_data
+2025/01/15 11:46:02 http://localhost:8080/metrics
+2025/01/15 12:04:34 Shutting down server...
+2025/01/15 12:04:34 Server exiting
+2025/01/15 12:04:36 Application started
+2025/01/15 12:04:36 Server is running on port 8080...
+2025/01/15 12:04:36 Endpoints:
+2025/01/15 12:04:36 http://localhost:8080/forecast?table=sales_data
+2025/01/15 12:04:36 http://localhost:8080/EOQ?table=sales_data
+2025/01/15 12:04:36 http://localhost:8080/cost?table=sales_data
+2025/01/15 12:04:36 http://localhost:8080/metrics
+Test log entry: Wed Jan 15 12:09:39 PM +06 2025
+2025/01/15 12:17:09 Shutting down server...
+2025/01/15 12:17:09 Server exiting
+2025/01/15 12:17:11 Application started
+2025/01/15 12:17:11 Server is running on port 8080...
+2025/01/15 12:17:11 Endpoints:
+2025/01/15 12:17:11 http://localhost:8080/forecast?table=sales_data
+2025/01/15 12:17:11 http://localhost:8080/EOQ?table=sales_data
+2025/01/15 12:17:11 http://localhost:8080/cost?table=sales_data
+2025/01/15 12:17:11 http://localhost:8080/metrics
+2025/01/15 12:24:16 Shutting down server...
+2025/01/15 12:24:16 Server exiting
+2025/01/15 12:24:17 Application started
+2025/01/15 12:24:17 Server is running on port 8080...
+2025/01/15 12:24:17 Endpoints:
+2025/01/15 12:24:17 http://localhost:8080/forecast?table=sales_data
+2025/01/15 12:24:17 http://localhost:8080/EOQ?table=sales_data
+2025/01/15 12:24:17 http://localhost:8080/cost?table=sales_data
+2025/01/15 12:24:17 http://localhost:8080/metrics
+2025/01/15 12:25:18 Shutting down server...
+2025/01/15 12:25:18 Server exiting
+2025/01/15 12:25:45 Application started
+2025/01/15 12:25:45 Server is running on port 8080...
+2025/01/15 12:25:45 Endpoints:
+2025/01/15 12:25:45 http://localhost:8080/forecast?table=sales_data
+2025/01/15 12:25:45 http://localhost:8080/EOQ?table=sales_data
+2025/01/15 12:25:45 http://localhost:8080/cost?table=sales_data
+2025/01/15 12:25:45 http://localhost:8080/metrics
+2025/01/15 12:36:55 Shutting down server...
+2025/01/15 12:36:55 Server exiting
+2025/01/15 12:36:57 Application started
+2025/01/15 12:36:57 Server is running on port 8080...
+2025/01/15 12:36:57 Endpoints:
+2025/01/15 12:36:57 http://localhost:8080/forecast?table=sales_data
+2025/01/15 12:36:57 http://localhost:8080/EOQ?table=sales_data
+2025/01/15 12:36:57 http://localhost:8080/cost?table=sales_data
+2025/01/15 12:36:57 http://localhost:8080/metrics
+2025/01/15 12:56:21 Shutting down server...
+2025/01/15 12:56:21 Server exiting
+2025/01/15 12:56:45 Application started
+2025/01/15 12:56:45 Server is running on port 8080...
+2025/01/15 12:56:45 Endpoints:
+2025/01/15 12:56:45 http://localhost:8080/forecast?table=sales_data
+2025/01/15 12:56:45 http://localhost:8080/EOQ?table=sales_data
+2025/01/15 12:56:45 http://localhost:8080/cost?table=sales_data
+2025/01/15 12:56:45 http://localhost:8080/metrics
+2025/01/15 12:59:17 Shutting down server...
+2025/01/15 12:59:17 Server exiting

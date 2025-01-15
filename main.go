@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -30,6 +29,19 @@ func init() {
 	prometheus.MustRegister(httpRequestsTotal)
 }
 
+func setupLogFile() (*os.File, error) {
+	// Create or open the log file
+	logFile, err := os.OpenFile("/var/log/app.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		return nil, err
+	}
+
+	// Set log output to both console and log file
+	log.SetOutput(logFile)
+
+	return logFile, nil
+}
+
 // Middleware to track metrics for HTTP requests
 func metricsMiddleware(next http.Handler) http.Handler {
     return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -38,13 +50,20 @@ func metricsMiddleware(next http.Handler) http.Handler {
     })
 }
 
-
 func main() {
+	// Set up the log file
+	logFile, err := setupLogFile()
+	if err != nil {
+		log.Fatalf("Error opening log file: %v", err)
+	}
+	defer logFile.Close()
+
+	// Log the application startup
+	log.Println("Application started")
+
 	// Database connection setup
 	connectorInstance := &database.MySQLDatabase{}
-
 	var db connector.DatabaseConnection = connectorInstance
-
 	if err := db.ConnectDB(); err != nil {
 		log.Fatalf("Error initializing database: %v", err)
 	}
@@ -92,12 +111,12 @@ func main() {
 
 	// Graceful shutdown
 	go func() {
-		fmt.Printf("Server is running on port %s...\n", port)
-		fmt.Println("Endpoints:")
-		fmt.Printf("http://localhost:%s/forecast?table=sales_data\n", port)
-		fmt.Printf("http://localhost:%s/EOQ?table=sales_data\n", port)
-		fmt.Printf("http://localhost:%s/cost?table=sales_data\n", port)
-		fmt.Printf("http://localhost:%s/metrics\n", port)
+		log.Printf("Server is running on port %s...\n", port)
+		log.Println("Endpoints:")
+		log.Printf("http://localhost:%s/forecast?table=sales_data\n", port)
+		log.Printf("http://localhost:%s/EOQ?table=sales_data\n", port)
+		log.Printf("http://localhost:%s/cost?table=sales_data\n", port)
+		log.Printf("http://localhost:%s/metrics\n", port)
 
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			log.Fatalf("HTTP server error: %v", err)

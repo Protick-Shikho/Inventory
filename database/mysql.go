@@ -3,6 +3,7 @@ package database
 import (
 	"database/sql"
 	"fmt"
+
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -12,9 +13,12 @@ type MySQLDatabase struct {
 }
 
 // ConnectDB initializes the MySQL database connection.
-func (m *MySQLDatabase) ConnectDB() error  {
+func (m *MySQLDatabase) ConnectDB() error {
 	var err error
 	m.DB, err = sql.Open("mysql", "root:123@tcp(localhost:3306)/inventory")
+	// m.DB, err = sql.Open("mysql", "root:123@tcp(host.docker.internal:3306)/inventory")
+	// m.DB, err = sql.Open("mysql", "root:root@123@tcp(127.0.0.1:3306)/inventory")
+
 	if err != nil {
 		return err
 	}
