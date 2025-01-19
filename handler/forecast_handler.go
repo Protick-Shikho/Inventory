@@ -20,7 +20,7 @@ func (fh *ForecastHandler) GetForecast(w http.ResponseWriter, r *http.Request) {
 
 	table := utils.GetTable(r)
 
-	forecast, err := fh.ForecastService.GenerateForecast(table)
+	forecast, test, err := fh.ForecastService.GenerateForecast(table)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error generating forecast: %v", err), http.StatusInternalServerError)
 		return
@@ -31,6 +31,14 @@ func (fh *ForecastHandler) GetForecast(w http.ResponseWriter, r *http.Request) {
 		Month: forecast[len(forecast)-1].Month,
 		Value: forecast[len(forecast)-1].Value,
 	}
+	
+	if test != "" {
+		response.Redis = "Redis"
+	} else {
+		response.Redis = "No Redis"
+	}
+
+	
 
 	// Set content type and return the forecast response as JSON
 	w.Header().Set("Content-Type", "application/json")
@@ -81,7 +89,7 @@ func (h *ForecastHandler) GetCost(w http.ResponseWriter, r *http.Request) {
 
 	table := utils.GetTable(r)
 
-	demand, err := h.ForecastService.GenerateForecast(table)
+	demand, _, err := h.ForecastService.GenerateForecast(table)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error generating forecast: %v", err), http.StatusInternalServerError)
 		return

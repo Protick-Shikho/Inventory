@@ -19,10 +19,10 @@ type ForecastService struct {
 }
 
 // GenerateForecast fetches demand data, applies the Exponential Smoothing algorithm, and persists the results.
-func (fs *ForecastService) GenerateForecast(table string) ([]entities.Forecast, error) {
-	demandRaw, err := fs.DataFetcher.FetchData(table, "demand")
+func (fs *ForecastService) GenerateForecast(table string) ([]entities.Forecast, string, error) {
+	demandRaw, test , err := fs.DataFetcher.FetchData(table, "demand")
 	if err != nil {
-		return nil, fmt.Errorf("failed to fetch data: %w", err)
+		return nil, "", fmt.Errorf("failed to fetch data: %w", err)
 	}
 
 	// Convert demand data to float64
@@ -37,24 +37,24 @@ func (fs *ForecastService) GenerateForecast(table string) ([]entities.Forecast, 
 			strValue := string(v)
 			floatValue, err := strconv.ParseFloat(strValue, 64) // Parse string to float64
 			if err != nil {
-				return nil, fmt.Errorf("failed to parse string value to float64: %v (value: %s)", err, strValue)
+				return nil, "", fmt.Errorf("failed to parse string value to float64: %v (value: %s)", err, strValue)
 			}
 			demand[i] = floatValue
 		default:
-			return nil, fmt.Errorf("failed to convert demand data to float64: %v (type %T)", val, val)
+			return nil, "", fmt.Errorf("failed to convert demand data to float64: %v (type %T)", val, val)
 		}
 	}
 
 	// Apply the Exponential Smoothing algorithm (from the domain layer)
 	forecastedValues, upcomingForecast, err := domain.ApplyExponentialSmoothing(demand, fs.Alpha)
 	if err != nil {
-		return nil, fmt.Errorf("failed to generate forecast: %w", err)
+		return nil, "", fmt.Errorf("failed to generate forecast: %w", err)
 	}
 
 	// Persist the forecasted values into the database
 	err = fs.DataFetcher.Forecast(table, forecastedValues)
 	if err != nil {
-		return nil, fmt.Errorf("failed to insert data: %w", err)
+		return nil, "", fmt.Errorf("failed to insert data: %w", err)
 	}
 
 	// Convert forecasted values into Forecast entities
@@ -71,7 +71,7 @@ func (fs *ForecastService) GenerateForecast(table string) ([]entities.Forecast, 
 		Value: upcomingForecast,
 	}
 
-	return forecasts, nil
+	return forecasts, test, nil
 }
 
 

@@ -3,6 +3,7 @@ package entities
 type Forecast struct {
     Month  int     // Month in the forecasted year
     Value  float64 `json:"Forecasted Demand"` // Forecasted value for the month
+	Redis string
 }
 
 type EOQ struct {

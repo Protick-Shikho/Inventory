@@ -12,16 +12,17 @@ import (
 	"github.com/Protick-Shikho/inventory/database"
 	Handler "github.com/Protick-Shikho/inventory/handler"
 	"github.com/Protick-Shikho/inventory/service"
+	"github.com/go-redis/redis/v8"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 // HTTP request metrics
 var httpRequestsTotal = prometheus.NewCounter(
-    prometheus.CounterOpts{
-        Name: "http_requests_total",
-        Help: "Total number of HTTP requests",
-    },
+	prometheus.CounterOpts{
+		Name: "http_requests_total",
+		Help: "Total number of HTTP requests",
+	},
 )
 
 func init() {
@@ -42,15 +43,29 @@ func setupLogFile() (*os.File, error) {
 	return logFile, nil
 }
 
+
 // Middleware to track metrics for HTTP requests
 func metricsMiddleware(next http.Handler) http.Handler {
-    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-        httpRequestsTotal.Inc() // Increment total request count
-        next.ServeHTTP(w, r)
-    })
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		httpRequestsTotal.Inc() // Increment total request count
+		next.ServeHTTP(w, r)
+	})
 }
 
 func main() {
+	// Redis connection
+	redisClient := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379",
+		Password: "", // No password set
+		DB:       0,  // Default database
+	})
+	defer redisClient.Close()
+
+	_, err := redisClient.Ping(context.Background()).Result()
+	if err != nil {
+		log.Fatal("Failed to connect to Redis:", err)
+	}
+
 	// Set up the log file
 	logFile, err := setupLogFile()
 	if err != nil {
@@ -62,29 +77,22 @@ func main() {
 	log.Println("Application started")
 
 	// Database connection setup
-	connectorInstance := &database.MySQLDatabase{}
-	var db connector.DatabaseConnection = connectorInstance
+	mysqlDatabase := &database.MySQLDatabase{
+		Redis: redisClient,
+	}
+	var db connector.DatabaseConnection = mysqlDatabase
 	if err := db.ConnectDB(); err != nil {
 		log.Fatalf("Error initializing database: %v", err)
 	}
 	defer db.Close()
 
-	dbInstance := &database.MySQLDatabase{DB: db.GetDB()}
-	var mainDB database.DataFetcher = dbInstance
-
-	// Initialize use case
-	alpha := 0.30
-	holdingCostRate := 0.20
-	stockQuantity := 10000.00
-	orderingCost := 44.50
-
 	// Initialize Forecast Service
 	forecastService := &service.ForecastService{
-		DataFetcher:     mainDB,
-		Alpha:           alpha,
-		HoldingCostRate: holdingCostRate,
-		OrderingCost:    orderingCost,
-		StockQuantity:   stockQuantity,
+		DataFetcher:     mysqlDatabase,
+		Alpha:           0.30,
+		HoldingCostRate: 0.20,
+		OrderingCost:    44.50,
+		StockQuantity:   10000.00,
 	}
 
 	forecastHandler := &Handler.ForecastHandler{
@@ -113,9 +121,9 @@ func main() {
 	go func() {
 		log.Printf("Server is running on port %s...\n", port)
 		log.Println("Endpoints:")
-		log.Printf("http://localhost:%s/forecast?table=sales_data\n", port)
-		log.Printf("http://localhost:%s/EOQ?table=sales_data\n", port)
-		log.Printf("http://localhost:%s/cost?table=sales_data\n", port)
+		log.Printf("http://localhost:%s/forecast\n", port)
+		log.Printf("http://localhost:%s/EOQ\n", port)
+		log.Printf("http://localhost:%s/cost\n", port)
 		log.Printf("http://localhost:%s/metrics\n", port)
 
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
